@@ -1,0 +1,144 @@
+/* Large, calm and high-contrast: the target group includes older people. */
+
+.pm-read label,
+.pm-search label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .25rem;
+}
+
+.pm-row {
+    display: flex;
+    gap: .5rem;
+}
+
+.pm-row input {
+    flex: 1;
+}
+
+input,
+button {
+    font-size: 1.15rem;
+    padding: .5rem .75rem;
+    border: 2px solid #444;
+    border-radius: 6px;
+}
+
+button {
+    background: #0b5394;
+    color: #fff;
+    border-color: #0b5394;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+    background: #073763;
+}
+
+.pm-error {
+    margin-top: 1rem;
+    padding: .75rem 1rem;
+    border-left: 6px solid #b00020;
+    background: #fdecee;
+}
+
+.pm-search {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin: 1.5rem 0 1rem;
+    padding: .75rem 0;
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.pm-search input {
+    width: 100%;
+    font-size: 1.35rem;
+}
+
+#pm-search-status {
+    margin: .4rem 0 0;
+    color: #444;
+}
+
+.pm-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.pm-area {
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: .5rem 1rem;
+}
+
+.pm-area summary {
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+}
+
+.pm-area h2 {
+    display: inline;
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+.pm-count {
+    color: #555;
+}
+
+.pm-count::before {
+    content: "(";
+}
+
+.pm-count::after {
+    content: ")";
+}
+
+.pm-section h3 {
+    font-size: 1.15rem;
+    margin: 1rem 0 .25rem;
+    color: #333;
+}
+
+.pm-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pm-link {
+    padding: .35rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.pm-link a {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.pm-link a:focus-visible {
+    outline: 3px solid #f1c232;
+    outline-offset: 2px;
+}
+
+/* The path helps only while searching, when the context is hidden. */
+.pm-path {
+    display: none;
+    font-size: .95rem;
+    color: #555;
+}
+
+body.pm-searching .pm-path {
+    display: block;
+}
+
+.pm-no-results {
+    font-size: 1.15rem;
+    padding: 1rem 0;
+}

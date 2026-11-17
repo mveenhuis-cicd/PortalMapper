@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Browser script for reading links; embedded so it can be shared with the extension later -->
+        <None Remove="Reader\extract-links.js" />
+        <EmbeddedResource Include="Reader\extract-links.js" LogicalName="extract-links.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Playwright" Version="1.64.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PortalMapper.Core\PortalMapper.Core.csproj" />
+    </ItemGroup>
+
+</Project>

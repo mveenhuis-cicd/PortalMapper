@@ -1,0 +1,65 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Portal-Mapper";
+}
+
+<form method="get" class="pm-read">
+    <label for="address">Adresse der Seite</label>
+    <div class="pm-row">
+        <input id="address" name="address" type="url" value="@Model.Address" required/>
+        <button type="submit">Seite auslesen</button>
+    </div>
+</form>
+
+@if (Model.Error is not null)
+{
+    <p class="pm-error" role="alert">@Model.Error</p>
+}
+
+@if (Model.Result is { } result)
+{
+    <div class="pm-search" role="search">
+        <label for="pm-search-input">Suchen</label>
+        <input id="pm-search-input" type="search" autocomplete="off" placeholder="z. B. arbeitslos melden"/>
+        <p id="pm-search-status" aria-live="polite" data-total="@result.LinkCount">@result.LinkCount Links</p>
+    </div>
+
+    <h1 class="pm-title">@result.Title</h1>
+
+    @foreach (var area in result.Areas)
+    {
+        var count = area.Sections.Sum(s => s.Links.Count);
+        <details class="pm-area" open="@(!area.Collapsed)" data-collapsed="@(area.Collapsed ? "true" : "false")">
+            <summary>
+                <h2>@area.Title</h2>
+                <span class="pm-count">@count</span>
+            </summary>
+
+            @foreach (var section in area.Sections)
+            {
+                <section class="pm-section">
+                    @if (section.Heading.Length > 0)
+                    {
+                        <h3>section.Heading</h3>
+                    }
+                    <ul>
+                        @foreach (var link in section.Links)
+                        {
+                            <li class="pm-link" data-search="@link.SearchText">
+                                <a href="@link.Href" target="_blank" rel="noopener noreferrer">@link.Name</a>
+                                <span class="pm-path">@link.Path</span>
+                            </li>
+                        }
+                    </ul>
+                </section>
+            }
+        </details>
+    }
+
+    <p id="pm-no-results" class="pm-no-results" hidden>Keine Treffer. Bitte andere Wörter versuchen.</p>
+}
+
+@section Scripts {
+    <script src="~/js/link-search.js" asp-append-version="true"></script>
+}
